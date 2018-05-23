@@ -1,8 +1,8 @@
 ifndef G4_VERSION
-    G4_VERSION = 10.02.p02
+    G4_VERSION = 10.2.2
 endif
-TARFILE = geant4.$(G4_VERSION).tar.gz
-G4DIR = geant4.$(G4_VERSION)
+TARFILE = v$(G4_VERSION).tar.gz
+G4DIR = geant4-$(G4_VERSION)
 
 which_cmake3 := $(shell which cmake3)
 find_cmake3 := $(findstring cmake3, $(which_cmake3))
@@ -15,7 +15,7 @@ endif
 all: $(G4DIR)/.make_install_done
 
 $(TARFILE):
-	wget http://geant4.web.cern.ch/geant4/support/source/$(TARFILE)
+	wget https://github.com/Geant4/geant4/archive/$(TARFILE)
 
 $(G4DIR)/.untar_done: $(TARFILE)
 	tar zxf $(TARFILE)
